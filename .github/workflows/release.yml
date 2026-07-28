@@ -24,8 +24,9 @@ jobs:
           registry-url: https://npm.pkg.github.com
           scope: "@zipboda"
       - run: pnpm install --frozen-lockfile
-      - run: pnpm typecheck
+      # ui는 ui-core의 빌드 산출물(dist/*.d.ts)로 타입을 해석하므로 build를 먼저 수행
       - run: pnpm build
+      - run: pnpm typecheck
       # Changesets: 버전 PR 생성 또는 (변경셋 존재 시) 패키지 배포
       - uses: changesets/action@v1
         with:
