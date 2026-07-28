@@ -1,0 +1,13 @@
+node_modules/
+# 빌드 산출물
+packages/*/build/
+packages/*/dist/
+# env & secrets (토큰/PAT 커밋 금지)
+.env
+.env.*
+!.env.example
+# tooling
+.turbo/
+*.log
+.DS_Store
+Thumbs.db
