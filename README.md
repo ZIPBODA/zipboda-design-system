@@ -36,24 +36,42 @@ pnpm build           # tokens → ui-core → ui (topological)
 ```
 설치:
 ```bash
-# web / admin (React DOM)
+# web / admin (React DOM + Tailwind)
 pnpm add @zipboda/tokens @zipboda/ui
-# app (React Native)
+# app (React Native / NativeWind)
 pnpm add @zipboda/tokens @zipboda/ui-core
 ```
+
+Tailwind 설정 (web/admin) — `tailwind.config.{js,ts}`:
+```js
+import preset from "@zipboda/tokens/tailwind";
+export default {
+  presets: [preset],
+  content: [
+    "./src/**/*.{ts,tsx}",
+    // 컴포넌트의 클래스 문자열을 스캔하도록 패키지 dist 포함(필수)
+    "./node_modules/@zipboda/ui/dist/**/*.{js,mjs}",
+    "./node_modules/@zipboda/ui-core/dist/**/*.{js,mjs}"
+  ]
+};
+```
+
+전역 CSS(1회) — CSS 변수 주입 + Tailwind:
+```css
+@import "@zipboda/tokens/css";   /* :root 의 --zb-* 변수(preset이 참조) */
+@tailwind base; @tailwind components; @tailwind utilities;
+```
+
 사용:
 ```tsx
-// web / admin
-import "@zipboda/tokens/css";          // :root CSS 변수 주입
-import { Button, Badge } from "@zipboda/ui";
-<Button variant="primary" size="lg">지금 신청하기</Button>
-
-// app (RN) — shared/ui 에 RN 구현, 계약·토큰만 공유
-import { buttonVariantTokens, buttonSizeSpec } from "@zipboda/ui-core";
-import * as tokens from "@zipboda/tokens"; // ZbBrandPrimary 등
+import { Button, Badge, Chip, Tab, Input } from "@zipboda/ui";
+<Button variant="primary" size="lg">지금 신청하기</Button>   {/* hover/active/disabled 상태 내장 */}
 ```
+
+app(RN/NativeWind): 동일 `@zipboda/tokens/tailwind` preset을 NativeWind에 적용하고, `@zipboda/ui-core`의 클래스 헬퍼(`buttonClasses()` 등)를 `className`으로 사용하거나 토큰(rn)으로 StyleSheet를 구성한다.
+
 - Next.js: `transpilePackages: ["@zipboda/ui","@zipboda/ui-core"]`
-- Vite: 필요 시 `optimizeDeps.include`에 추가
+- Vite: `optimizeDeps.include: ["@zipboda/ui","@zipboda/ui-core"]`
 
 ## FSD 결선
 - `shared/config`가 `@zipboda/tokens` re-export, `shared/ui`가 `@zipboda/ui`(web·admin) 재노출/조합. 인라인 재구현 금지(frontend-rule R10/D4). 출처 node-id 주석 유지(figma-implementation-rule D5).

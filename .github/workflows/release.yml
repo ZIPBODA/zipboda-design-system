@@ -24,6 +24,7 @@ jobs:
           registry-url: https://npm.pkg.github.com
           scope: "@zipboda"
       - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
       - run: pnpm build
       # Changesets: 버전 PR 생성 또는 (변경셋 존재 시) 패키지 배포
       - uses: changesets/action@v1

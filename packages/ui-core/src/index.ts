@@ -91,5 +91,70 @@ export const inputStateTokens: Record<InputState, InputStateTokens> = {
 };
 export const inputSpec = { padY: 12, padX: 16, font: 14, radius: 8, height: 44 } as const;
 
-/** DOM 헬퍼: 토큰 키 → CSS 변수 참조 */
+/** DOM 헬퍼: 토큰 키 → CSS 변수 참조 (인라인 스타일/StyleSheet 대비) */
 export const cssVar = (key: TokenKey): string => `var(--zb-${key})`;
+
+/* ══════════════════════════════════════════════════════════════
+ * Tailwind class presets — @zipboda/tokens/tailwind preset과 짝.
+ * web(tailwindcss)·app(NativeWind)이 동일 클래스 문자열을 공유한다.
+ * 색 이름은 preset의 theme.extend.colors 키(brand/fg/surface/line/status/gray…)와 일치.
+ * ══════════════════════════════════════════════════════════════ */
+export const cx = (...parts: Array<string | false | null | undefined>): string =>
+  parts.filter(Boolean).join(" ");
+
+/* Button */
+export const buttonBaseClass =
+  "inline-flex items-center justify-center gap-2 font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-40";
+export const buttonSizeClass: Record<ButtonSize, string> = {
+  lg: "text-sm px-8 py-3.5 rounded-xl",
+  sm: "text-xs px-4 py-2 rounded-lg"
+};
+export const buttonVariantClass: Record<ButtonVariant, string> = {
+  primary: "bg-brand text-brand-on hover:bg-brand-hover active:bg-brand-active",
+  secondary: "bg-surface-tertiary text-fg-strong hover:bg-gray-200 active:bg-gray-300",
+  outline: "bg-transparent text-brand border border-brand hover:bg-amber-50 active:bg-amber-100",
+  ghost: "bg-transparent text-fg-body hover:bg-surface-secondary hover:text-fg-strong active:bg-surface-tertiary",
+  dark: "bg-fg-strong text-fg-ondark hover:bg-gray-700 active:bg-gray-600"
+};
+export const buttonClasses = (o: ButtonContract = {}): string =>
+  cx(buttonBaseClass, buttonSizeClass[o.size ?? "lg"], buttonVariantClass[o.variant ?? "primary"], o.fullWidth ? "w-full" : undefined);
+
+/* Badge */
+export const badgeBaseClass = "inline-flex items-center rounded-md px-2 py-1 text-[10px] font-bold leading-none";
+export const badgeVariantClass: Record<BadgeVariant, string> = {
+  primary: "bg-brand text-brand-on",
+  error: "bg-status-error text-fg-ondark",
+  success: "bg-status-success text-fg-ondark",
+  info: "bg-status-info text-fg-ondark",
+  neutral: "bg-surface-tertiary text-fg-muted",
+  dark: "bg-fg-strong text-fg-ondark"
+};
+export const badgeClasses = (variant: BadgeVariant = "neutral"): string =>
+  cx(badgeBaseClass, badgeVariantClass[variant]);
+
+/* Chip */
+export const chipBaseClass = "inline-flex items-center rounded-full px-3 py-1.5 text-[10px]";
+export const chipVariantClass: Record<ChipVariant, string> = {
+  active: "bg-brand text-brand-on font-bold",
+  default: "bg-surface-tertiary text-fg-muted font-semibold",
+  darkActive: "bg-fg-strong text-fg-ondark font-bold",
+  outline: "bg-transparent text-fg-body border border-line font-medium"
+};
+export const chipClasses = (variant: ChipVariant = "default"): string =>
+  cx(chipBaseClass, chipVariantClass[variant]);
+
+/* Tab */
+export const tabBaseClass = "inline-flex items-center justify-center px-4 py-2.5 text-sm border-b-2 transition-colors";
+export const tabClasses = (active = false): string =>
+  cx(tabBaseClass, active ? "text-fg-strong font-bold border-brand" : "text-fg-muted font-medium border-transparent");
+
+/* Input */
+export const inputBaseClass =
+  "box-border h-11 w-full rounded-md border px-4 py-3 text-sm outline-none transition-colors placeholder:text-fg-muted";
+export const inputClasses = (disabled = false): string =>
+  cx(
+    inputBaseClass,
+    disabled
+      ? "bg-surface-secondary border-line text-fg-disabled cursor-not-allowed"
+      : "bg-surface border-line text-fg-strong focus:border-brand"
+  );

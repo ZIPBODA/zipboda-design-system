@@ -12,14 +12,18 @@
   },
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts --external react --external react-dom --clean",
+    "prepack": "pnpm build",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
     "react": ">=18",
-    "react-dom": ">=18"
+    "react-dom": ">=18",
+    "@zipboda/tokens": "workspace:^"
+  },
+  "peerDependenciesMeta": {
+    "@zipboda/tokens": { "optional": false }
   },
   "dependencies": {
-    "@zipboda/tokens": "workspace:^",
     "@zipboda/ui-core": "workspace:^"
   },
   "devDependencies": {
