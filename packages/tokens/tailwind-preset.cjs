@@ -38,11 +38,19 @@ module.exports = {
           error: "#EF4444", "error-bg": "#FEE2E2",
           "warning-bg": "#FEF3C7"
         },
-        chart: { 1: "#3B82F6", 2: "#10B981", 3: "#F59E0B", 4: "#EF4444" }
+        chart: { 1: "#3B82F6", 2: "#10B981", 3: "#F59E0B", 4: "#EF4444" },
+        // 보라 배지
+        purple: { DEFAULT: "#8B5CF6", bg: "#F5F3FF", light: "#F3E8FF" },
+        // 코드 블록 / diff
+        code: {
+          bg: "#1E1E1E", text: "#888888",
+          "deleted-label": "#FF6B6B", deleted: "#E06C75",
+          "added-label": "#51CF66", added: "#98C379"
+        }
       },
       borderRadius: {
         xs: "2px", sm: "4px", md: "8px", lg: "12px", xl: "16px", "2xl": "20px", "3xl": "24px", full: "9999px",
-        6: "6px", 10: "10px", 18: "18px"
+        3: "3px", 6: "6px", 10: "10px", 18: "18px"
       },
       fontFamily: {
         sans: ["Pretendard", "-apple-system", "BlinkMacSystemFont", "system-ui", "Roboto", "sans-serif"]

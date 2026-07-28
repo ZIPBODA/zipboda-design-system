@@ -29,7 +29,23 @@
     "4": { "$type": "color", "$value": "#EF4444" }
   },
 
+  "purple": {
+    "DEFAULT": { "$type": "color", "$value": "#8B5CF6" },
+    "bg":      { "$type": "color", "$value": "#F5F3FF" },
+    "light":   { "$type": "color", "$value": "#F3E8FF" }
+  },
+
+  "code": {
+    "bg":           { "$type": "color", "$value": "#1E1E1E" },
+    "text":         { "$type": "color", "$value": "#888888" },
+    "deletedLabel": { "$type": "color", "$value": "#FF6B6B" },
+    "deleted":      { "$type": "color", "$value": "#E06C75" },
+    "addedLabel":   { "$type": "color", "$value": "#51CF66" },
+    "added":        { "$type": "color", "$value": "#98C379" }
+  },
+
   "radius": {
+    "3":  { "$type": "dimension", "$value": "3px" },
     "6":  { "$type": "dimension", "$value": "6px" },
     "10": { "$type": "dimension", "$value": "10px" },
     "18": { "$type": "dimension", "$value": "18px" }
