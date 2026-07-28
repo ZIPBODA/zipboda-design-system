@@ -1,0 +1,108 @@
+{
+  "color": {
+    "amber": {
+      "50":  { "$type": "color", "$value": "#FFFBF0" },
+      "100": { "$type": "color", "$value": "#FFF8E7" },
+      "200": { "$type": "color", "$value": "#FFF3C4" },
+      "400": { "$type": "color", "$value": "#FFBA17" },
+      "500": { "$type": "color", "$value": "#E5A714" },
+      "600": { "$type": "color", "$value": "#CC9412" },
+      "700": { "$type": "color", "$value": "#92600A" }
+    },
+    "blue": {
+      "50":  { "$type": "color", "$value": "#EFF6FF" },
+      "100": { "$type": "color", "$value": "#EDF5FF" },
+      "500": { "$type": "color", "$value": "#2B7FFF" },
+      "600": { "$type": "color", "$value": "#155DFC" }
+    },
+    "green": {
+      "50":  { "$type": "color", "$value": "#ECFDF5" },
+      "500": { "$type": "color", "$value": "#00BC7D" },
+      "700": { "$type": "color", "$value": "#065F46" }
+    },
+    "red": {
+      "50":  { "$type": "color", "$value": "#FFF3F0" },
+      "500": { "$type": "color", "$value": "#FF6467" }
+    },
+    "orange": {
+      "50":  { "$type": "color", "$value": "#FEF8ED" },
+      "500": { "$type": "color", "$value": "#F59E0B" }
+    },
+    "gray": {
+      "0":   { "$type": "color", "$value": "#FFFFFF" },
+      "50":  { "$type": "color", "$value": "#F9FAFB" },
+      "100": { "$type": "color", "$value": "#F3F4F6" },
+      "200": { "$type": "color", "$value": "#E5E7EB" },
+      "300": { "$type": "color", "$value": "#D1D5DC" },
+      "400": { "$type": "color", "$value": "#99A1AF" },
+      "500": { "$type": "color", "$value": "#6A7282" },
+      "600": { "$type": "color", "$value": "#4A5565" },
+      "700": { "$type": "color", "$value": "#364153" },
+      "800": { "$type": "color", "$value": "#1E2939" },
+      "850": { "$type": "color", "$value": "#1A1A1A" },
+      "900": { "$type": "color", "$value": "#101828" },
+      "950": { "$type": "color", "$value": "#111111" },
+      "1000":{ "$type": "color", "$value": "#000000" }
+    },
+    "warm": { "$type": "color", "$value": "#FAFAF8" }
+  },
+
+  "space": {
+    "1":  { "$type": "dimension", "$value": "2px" },
+    "2":  { "$type": "dimension", "$value": "4px" },
+    "3":  { "$type": "dimension", "$value": "6px" },
+    "4":  { "$type": "dimension", "$value": "8px" },
+    "5":  { "$type": "dimension", "$value": "10px" },
+    "6":  { "$type": "dimension", "$value": "12px" },
+    "8":  { "$type": "dimension", "$value": "16px" },
+    "9":  { "$type": "dimension", "$value": "20px" },
+    "10": { "$type": "dimension", "$value": "24px" },
+    "12": { "$type": "dimension", "$value": "32px" },
+    "13": { "$type": "dimension", "$value": "40px" },
+    "14": { "$type": "dimension", "$value": "48px" },
+    "16": { "$type": "dimension", "$value": "64px" }
+  },
+
+  "radius": {
+    "xs":   { "$type": "dimension", "$value": "2px" },
+    "sm":   { "$type": "dimension", "$value": "4px" },
+    "md":   { "$type": "dimension", "$value": "8px" },
+    "lg":   { "$type": "dimension", "$value": "12px" },
+    "xl":   { "$type": "dimension", "$value": "16px" },
+    "2xl":  { "$type": "dimension", "$value": "20px" },
+    "3xl":  { "$type": "dimension", "$value": "24px" },
+    "full": { "$type": "dimension", "$value": "9999px" }
+  },
+
+  "fontFamily": {
+    "sans": { "$type": "fontFamily", "$value": "Pretendard" }
+  },
+
+  "fontSize": {
+    "10": { "$type": "dimension", "$value": "10px" },
+    "12": { "$type": "dimension", "$value": "12px" },
+    "14": { "$type": "dimension", "$value": "14px" },
+    "16": { "$type": "dimension", "$value": "16px" },
+    "18": { "$type": "dimension", "$value": "18px" },
+    "20": { "$type": "dimension", "$value": "20px" },
+    "24": { "$type": "dimension", "$value": "24px" },
+    "30": { "$type": "dimension", "$value": "30px" },
+    "36": { "$type": "dimension", "$value": "36px" },
+    "48": { "$type": "dimension", "$value": "48px" }
+  },
+
+  "fontWeight": {
+    "regular":  { "$type": "fontWeight", "$value": 400 },
+    "medium":   { "$type": "fontWeight", "$value": 500 },
+    "semibold": { "$type": "fontWeight", "$value": 600 },
+    "bold":     { "$type": "fontWeight", "$value": 700 },
+    "extrabold":{ "$type": "fontWeight", "$value": 800 }
+  },
+
+  "shadow": {
+    "sm": { "$type": "shadow", "$value": "0px 1px 4px 0px rgba(0,0,0,0.06)" },
+    "md": { "$type": "shadow", "$value": "0px 4px 8px 0px rgba(0,0,0,0.10)" },
+    "lg": { "$type": "shadow", "$value": "0px 8px 16px -2px rgba(0,0,0,0.12)" },
+    "xl": { "$type": "shadow", "$value": "0px 12px 24px -4px rgba(0,0,0,0.15)" }
+  }
+}

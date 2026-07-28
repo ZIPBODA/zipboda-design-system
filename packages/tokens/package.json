@@ -1,0 +1,33 @@
+{
+  "name": "@zipboda/tokens",
+  "version": "0.1.0",
+  "description": "집보다(Zipboda) 디자인 토큰 — DTCG 소스 → Style Dictionary (CSS 변수·ES6/TS·RN)",
+  "type": "module",
+  "sideEffects": ["*.css"],
+  "files": ["build", "src"],
+  "exports": {
+    ".": {
+      "types": "./build/js/index.d.ts",
+      "import": "./build/js/index.js"
+    },
+    "./css": "./build/css/variables.css",
+    "./tokens.css": "./build/css/variables.css"
+  },
+  "scripts": {
+    "build": "style-dictionary build --config style-dictionary.config.mjs",
+    "clean": "node -e \"require('fs').rmSync('build',{recursive:true,force:true})\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "style-dictionary": "^4.3.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZIPBODA/zipboda-design-system.git",
+    "directory": "packages/tokens"
+  }
+}
