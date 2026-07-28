@@ -1,10 +1,16 @@
 {
   "name": "@zipboda/tokens",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "집보다(Zipboda) 디자인 토큰 — DTCG 소스 → Style Dictionary (CSS 변수·ES6/TS·RN)",
   "type": "module",
-  "sideEffects": ["*.css"],
-  "files": ["build", "src", "tailwind-preset.cjs"],
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "build",
+    "src",
+    "tailwind-preset.cjs"
+  ],
   "exports": {
     ".": {
       "types": "./build/js/index.d.ts",

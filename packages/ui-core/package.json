@@ -1,9 +1,11 @@
 {
   "name": "@zipboda/ui-core",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "집보다(Zipboda) UI 계약 — 프레임워크 무관 타입·variant→token 맵 (DOM/RN 파리티)",
   "type": "module",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

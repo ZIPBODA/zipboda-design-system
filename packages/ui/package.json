@@ -1,9 +1,11 @@
 {
   "name": "@zipboda/ui",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "집보다(Zipboda) React DOM UI 컴포넌트 (web·admin 공유)",
   "type": "module",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -21,7 +23,9 @@
     "@zipboda/tokens": "workspace:^"
   },
   "peerDependenciesMeta": {
-    "@zipboda/tokens": { "optional": false }
+    "@zipboda/tokens": {
+      "optional": false
+    }
   },
   "dependencies": {
     "@zipboda/ui-core": "workspace:^"
