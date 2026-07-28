@@ -56,11 +56,12 @@ export default {
 };
 ```
 
-전역 CSS(1회) — CSS 변수 주입 + Tailwind:
+전역 CSS(1회) — Tailwind:
 ```css
-@import "@zipboda/tokens/css";   /* :root 의 --zb-* 변수(preset이 참조) */
 @tailwind base; @tailwind components; @tailwind utilities;
+/* (선택) 커스텀 CSS에서 토큰 변수(--zb-*)를 쓰려면: @import "@zipboda/tokens/css"; */
 ```
+> preset이 **raw 값**을 담고 있어 유틸리티 사용에는 `tokens/css` import가 **필수 아님**.
 
 사용:
 ```tsx
@@ -68,7 +69,27 @@ import { Button, Badge, Chip, Tab, Input } from "@zipboda/ui";
 <Button variant="primary" size="lg">지금 신청하기</Button>   {/* hover/active/disabled 상태 내장 */}
 ```
 
-app(RN/NativeWind): 동일 `@zipboda/tokens/tailwind` preset을 NativeWind에 적용하고, `@zipboda/ui-core`의 클래스 헬퍼(`buttonClasses()` 등)를 `className`으로 사용하거나 토큰(rn)으로 StyleSheet를 구성한다.
+### app (React Native · NativeWind) — web과 동일 preset·클래스로 통일
+`tailwind.config.js`:
+```js
+const zb = require("@zipboda/tokens/tailwind");
+module.exports = {
+  presets: [require("nativewind/preset"), zb],
+  content: [
+    "./src/**/*.{ts,tsx}",
+    "./node_modules/@zipboda/ui-core/dist/**/*.{js,mjs}"
+  ]
+};
+```
+컴포넌트(RN): `@zipboda/ui`(DOM)는 쓰지 않고, **`@zipboda/ui-core` 클래스 헬퍼를 RN 프리미티브에 `className`으로 적용**(web과 동일 클래스):
+```tsx
+import { Pressable, Text } from "react-native";
+import { buttonClasses } from "@zipboda/ui-core";
+<Pressable className={buttonClasses({ variant: "primary", size: "lg" })}>
+  <Text className="text-brand-on font-bold">지금 신청하기</Text>
+</Pressable>
+```
+> preset이 raw 값이라 NativeWind에서 **CSS 파일 없이 동작**. `hover:`는 웹 전용(네이티브 무시), `active:`는 Pressable에서 동작.
 
 - Next.js: `transpilePackages: ["@zipboda/ui","@zipboda/ui-core"]`
 - Vite: `optimizeDeps.include: ["@zipboda/ui","@zipboda/ui-core"]`
