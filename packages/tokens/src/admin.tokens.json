@@ -1,0 +1,53 @@
+{
+  "adminStatus": {
+    "info":      { "$type": "color", "$value": "#3B82F6" },
+    "infoBg":    { "$type": "color", "$value": "#DBEAFE" },
+    "success":   { "$type": "color", "$value": "#10B981" },
+    "successBg": { "$type": "color", "$value": "#D1FAE5" },
+    "error":     { "$type": "color", "$value": "#EF4444" },
+    "errorBg":   { "$type": "color", "$value": "#FEE2E2" },
+    "warningBg": { "$type": "color", "$value": "#FEF3C7" }
+  },
+
+  "admin": {
+    "surface":      { "$type": "color", "$value": "#F4F6F8" },
+    "textStrong":   { "$type": "color", "$value": "#111827" },
+    "textMuted":    { "$type": "color", "$value": "#6B7280" },
+    "textDisabled": { "$type": "color", "$value": "#9CA3AF" },
+    "border":       { "$type": "color", "$value": "#E5E7EB" },
+    "rowHover":     { "$type": "color", "$value": "#F9FAFB" },
+    "rowSelected":  { "$type": "color", "$value": "#EFF6FF" },
+    "sidebarBg":     { "$type": "color", "$value": "#000000" },
+    "sidebarHover":  { "$type": "color", "$value": "#222222" },
+    "sidebarActive": { "$type": "color", "$value": "#2A2A2A" }
+  },
+
+  "chart": {
+    "1": { "$type": "color", "$value": "#3B82F6" },
+    "2": { "$type": "color", "$value": "#10B981" },
+    "3": { "$type": "color", "$value": "#F59E0B" },
+    "4": { "$type": "color", "$value": "#EF4444" }
+  },
+
+  "purple": {
+    "DEFAULT": { "$type": "color", "$value": "#8B5CF6" },
+    "bg":      { "$type": "color", "$value": "#F5F3FF" },
+    "light":   { "$type": "color", "$value": "#F3E8FF" }
+  },
+
+  "code": {
+    "bg":           { "$type": "color", "$value": "#1E1E1E" },
+    "text":         { "$type": "color", "$value": "#888888" },
+    "deletedLabel": { "$type": "color", "$value": "#FF6B6B" },
+    "deleted":      { "$type": "color", "$value": "#E06C75" },
+    "addedLabel":   { "$type": "color", "$value": "#51CF66" },
+    "added":        { "$type": "color", "$value": "#98C379" }
+  },
+
+  "radius": {
+    "3":  { "$type": "dimension", "$value": "3px" },
+    "6":  { "$type": "dimension", "$value": "6px" },
+    "10": { "$type": "dimension", "$value": "10px" },
+    "18": { "$type": "dimension", "$value": "18px" }
+  }
+}

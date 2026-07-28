@@ -1,0 +1,49 @@
+{
+  "brand": {
+    "primary":       { "$type": "color", "$value": "{color.amber.400}" },
+    "primaryHover":  { "$type": "color", "$value": "{color.amber.500}" },
+    "primaryActive": { "$type": "color", "$value": "{color.amber.600}" },
+    "primaryDark":   { "$type": "color", "$value": "{color.amber.700}" },
+    "onPrimary":     { "$type": "color", "$value": "{color.gray.850}" }
+  },
+
+  "text": {
+    "heading": { "$type": "color", "$value": "{color.gray.900}" },
+    "strong":  { "$type": "color", "$value": "{color.gray.850}" },
+    "body":    { "$type": "color", "$value": "{color.gray.600}" },
+    "muted":   { "$type": "color", "$value": "{color.gray.500}" },
+    "disabled":{ "$type": "color", "$value": "{color.gray.400}" },
+    "onDark":  { "$type": "color", "$value": "{color.gray.0}" }
+  },
+
+  "bg": {
+    "default":   { "$type": "color", "$value": "{color.gray.0}" },
+    "secondary": { "$type": "color", "$value": "{color.gray.50}" },
+    "tertiary":  { "$type": "color", "$value": "{color.gray.100}" },
+    "warm":      { "$type": "color", "$value": "{color.warm}" },
+    "dark":      { "$type": "color", "$value": "{color.gray.950}" }
+  },
+
+  "border": {
+    "subtle":  { "$type": "color", "$value": "{color.gray.100}" },
+    "default": { "$type": "color", "$value": "{color.gray.200}" },
+    "strong":  { "$type": "color", "$value": "{color.gray.300}" }
+  },
+
+  "status": {
+    "info":       { "$type": "color", "$value": "{color.blue.500}" },
+    "infoBg":     { "$type": "color", "$value": "{color.blue.50}" },
+    "success":    { "$type": "color", "$value": "{color.green.500}" },
+    "successBg":  { "$type": "color", "$value": "{color.green.50}" },
+    "successText":{ "$type": "color", "$value": "{color.green.700}" },
+    "warning":    { "$type": "color", "$value": "{color.orange.500}" },
+    "warningBg":  { "$type": "color", "$value": "{color.orange.50}" },
+    "error":      { "$type": "color", "$value": "{color.red.500}" },
+    "errorBg":    { "$type": "color", "$value": "{color.red.50}" }
+  },
+
+  "link": {
+    "default": { "$type": "color", "$value": "{color.blue.500}" },
+    "text":    { "$type": "color", "$value": "{color.blue.600}" }
+  }
+}
