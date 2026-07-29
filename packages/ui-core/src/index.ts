@@ -158,3 +158,60 @@ export const inputClasses = (disabled = false): string =>
       ? "bg-surface-secondary border-line text-fg-disabled cursor-not-allowed"
       : "bg-surface border-line text-fg-strong focus:border-brand"
   );
+
+/* Checkbox (figma 20:96) — box 24×24 r4, unchecked border 1.5 #D1D5DC, checked bg brand ✓흰색 */
+export interface CheckboxContract {
+  checked?: boolean;
+  disabled?: boolean;
+}
+export const checkboxRootClass = "inline-flex cursor-pointer select-none items-center gap-2";
+export const checkboxBoxClass =
+  "peer size-6 shrink-0 appearance-none rounded-sm border-[1.5px] border-line-strong bg-surface transition-colors " +
+  "checked:border-brand checked:bg-brand disabled:cursor-not-allowed disabled:border-line disabled:bg-surface-tertiary disabled:opacity-50";
+export const checkboxMarkClass =
+  "pointer-events-none absolute inset-0 hidden items-center justify-center text-fg-ondark peer-checked:flex";
+export const checkboxLabelClass = "text-compact text-gray-700";
+
+/* SearchBar (figma 20:126) — r12, pad 10/16, bg #F3F4F6, icon 18 #99A1AF */
+export const searchBarRootClass = "inline-flex items-center gap-2 rounded-lg bg-surface-tertiary px-4 py-2.5";
+export const searchBarIconClass = "shrink-0 text-fg-disabled";
+export const searchBarInputClass =
+  "w-full bg-transparent text-sm text-fg-strong outline-none placeholder:text-fg-disabled";
+
+/* Rating (figma 20:159, star 20:153) — 별 5개 gap 2, 채움 #FFBA17. 빈 별 색은 디자인 미정의 → 중립 gray */
+export const RATING_MAX = 5;
+export const ratingRootClass = "inline-flex items-center gap-0.5";
+export const ratingStarOnClass = "text-brand";
+export const ratingStarOffClass = "text-line-strong";
+
+/* Avatar (figma 20:169) — 40 원형, bg #F3F4F6, 이니셜 #6A7282 700/14 */
+export const avatarClass =
+  "inline-flex size-10 items-center justify-center overflow-hidden rounded-full bg-surface-tertiary text-sm font-bold text-fg-muted";
+
+/* Divider (figma 20:175) — 1px #F3F4F6 */
+export type DividerOrientation = "horizontal" | "vertical";
+export const dividerClass: Record<DividerOrientation, string> = {
+  horizontal: "h-px w-full border-0 bg-line-subtle",
+  vertical: "w-px self-stretch bg-line-subtle"
+};
+
+/* Card/Product (figma 20:183 / 26:50) — w160 gap8, img fill·h120·r12, info gap4·px4 */
+export const cardProductRootClass = "flex w-40 flex-col gap-2";
+export const cardProductImageClass = "h-[120px] w-full overflow-hidden rounded-lg bg-surface-tertiary";
+export const cardProductInfoClass = "flex flex-col gap-1 px-1";
+export const cardProductBrandClass = "text-caption font-medium text-fg-disabled";
+export const cardProductNameClass = "truncate text-xs font-semibold text-fg-strong";
+export const cardProductPriceClass = "text-sm font-bold text-fg-heading";
+
+/* Card/Listing (figma 20:193 / 26:56) — w320 r16 bg#FFF border#F3F4F6, Header p16, Body p0/16/16 gap16 */
+export const cardListingRootClass = "flex w-80 flex-col rounded-xl border border-line-subtle bg-surface";
+export const cardListingHeaderClass = "flex items-center gap-2 p-4";
+export const cardListingTitleClass = "text-sm font-bold text-fg-strong";
+export const cardListingBodyClass = "flex items-center gap-4 px-4 pb-4";
+export const cardListingLocationClass = "text-xs font-normal text-fg-muted";
+export const cardListingDdayClass = "text-xs font-semibold text-status-error";
+
+/* ListItem (figma 20:203) — pad 12/16 gap8, 라벨 400/14 #1A1A1A, 값 500/14 #6A7282 */
+export const listItemRootClass = "flex w-full items-center gap-2 px-4 py-3";
+export const listItemLabelClass = "text-sm font-normal text-fg-strong";
+export const listItemValueClass = "ml-auto text-sm font-medium text-fg-muted";
