@@ -13,7 +13,7 @@
 > app(React Native)은 `@zipboda/ui`(DOM)를 쓰지 않고, `@zipboda/ui-core` 계약 + `@zipboda/tokens`(rn)로 `src/shared/ui`에 RN 컴포넌트를 자체 구현한다.
 
 ## 토큰 소스 · 파이프라인
-- 정본: `ZIPBODA_디자인시스템.md`(앰버). 소스 파일 `packages/tokens/src/*.tokens.json`(DTCG).
+- 정본: `ZIPBODA_design-system.md`(앰버). 소스 파일 `packages/tokens/src/*.tokens.json`(DTCG).
 - Figma 변경 → DTCG 재export(또는 값 갱신) → `pnpm --filter @zipboda/tokens build` → 릴리스.
 
 ## 로컬 개발
