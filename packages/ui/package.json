@@ -1,6 +1,6 @@
 {
   "name": "@zipboda/ui",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "집보다(Zipboda) React DOM UI 컴포넌트 (web·admin 공유)",
   "type": "module",
   "files": [
