@@ -103,6 +103,7 @@
     "sm": { "$type": "shadow", "$value": "0px 1px 4px 0px rgba(0,0,0,0.06)" },
     "md": { "$type": "shadow", "$value": "0px 4px 8px 0px rgba(0,0,0,0.10)" },
     "lg": { "$type": "shadow", "$value": "0px 8px 16px -2px rgba(0,0,0,0.12)" },
-    "xl": { "$type": "shadow", "$value": "0px 12px 24px -4px rgba(0,0,0,0.15)" }
+    "xl": { "$type": "shadow", "$value": "0px 12px 24px -4px rgba(0,0,0,0.15)" },
+    "modal": { "$type": "shadow", "$value": "0px 8px 32px -4px rgba(0,0,0,0.15)" }
   }
 }

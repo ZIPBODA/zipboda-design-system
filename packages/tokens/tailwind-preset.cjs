@@ -39,6 +39,13 @@ module.exports = {
           "warning-bg": "#FEF3C7"
         },
         chart: { 1: "#3B82F6", 2: "#10B981", 3: "#F59E0B", 4: "#EF4444" },
+        // Modal 아이콘/상태 (set 281:136 — Confirm/Alert/Info/Success)
+        modal: {
+          "confirm-icon-bg": "#FFF8E7", "confirm-icon": "#CC8C00",
+          "alert-icon-bg": "#FEE2E2", "alert-icon": "#EF4444",
+          "info-icon-bg": "#EFF6FF", "info-icon": "#3373D9",
+          "success-icon-bg": "#ECFDF5", "success-icon": "#00BC7D"
+        },
         // 보라 배지
         purple: { DEFAULT: "#8B5CF6", bg: "#F5F3FF", light: "#F3E8FF" },
         // 코드 블록 / diff
@@ -75,7 +82,8 @@ module.exports = {
         sm: "0 1px 4px 0 rgba(0,0,0,0.06)",
         md: "0 4px 8px 0 rgba(0,0,0,0.10)",
         lg: "0 8px 16px -2px rgba(0,0,0,0.12)",
-        xl: "0 12px 24px -4px rgba(0,0,0,0.15)"
+        xl: "0 12px 24px -4px rgba(0,0,0,0.15)",
+        modal: "0 8px 32px -4px rgba(0,0,0,0.15)"
       }
     }
   }

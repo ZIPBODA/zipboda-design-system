@@ -45,5 +45,16 @@
   "link": {
     "default": { "$type": "color", "$value": "{color.blue.500}" },
     "text":    { "$type": "color", "$value": "{color.blue.600}" }
+  },
+
+  "modal": {
+    "confirmIconBg": { "$type": "color", "$value": "#FFF8E7" },
+    "confirmIcon":   { "$type": "color", "$value": "#CC8C00" },
+    "alertIconBg":   { "$type": "color", "$value": "#FEE2E2" },
+    "alertIcon":     { "$type": "color", "$value": "#EF4444" },
+    "infoIconBg":    { "$type": "color", "$value": "#EFF6FF" },
+    "infoIcon":      { "$type": "color", "$value": "#3373D9" },
+    "successIconBg": { "$type": "color", "$value": "#ECFDF5" },
+    "successIcon":   { "$type": "color", "$value": "#00BC7D" }
   }
 }

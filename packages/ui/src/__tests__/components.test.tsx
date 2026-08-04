@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
@@ -10,6 +10,7 @@ import { Divider } from "../Divider.js";
 import { CardProduct } from "../CardProduct.js";
 import { CardListing } from "../CardListing.js";
 import { ListItem } from "../ListItem.js";
+import { Modal } from "../Modal.js";
 
 describe("Checkbox", () => {
   it("라벨을 렌더한다", () => {
@@ -129,5 +130,55 @@ describe("ListItem", () => {
   it("값이 없으면 값 노드를 렌더하지 않는다", () => {
     const { container } = render(<ListItem label="라벨만" />);
     expect(container.querySelectorAll("span")).toHaveLength(1);
+  });
+});
+
+describe("Modal", () => {
+  it("confirm은 제목·메시지·취소/확인 버튼과 dialog 역할을 렌더한다", () => {
+    render(<Modal variant="confirm" title="확인" message="진행할까요?" />);
+    expect(screen.getByRole("dialog", { name: "확인" })).toBeInTheDocument();
+    expect(screen.getByText("진행할까요?")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "취소" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "확인" })).toBeInTheDocument();
+  });
+
+  it("open=false면 아무것도 렌더하지 않는다", () => {
+    const { container } = render(<Modal open={false} title="숨김" message="x" />);
+    expect(container).toBeEmptyDOMElement();
+  });
+
+  it("alert 주 버튼은 삭제(danger)이고 onConfirm을 호출한다", async () => {
+    const user = userEvent.setup();
+    const onConfirm = vi.fn();
+    render(<Modal variant="alert" title="삭제 확인" message="삭제할까요?" onConfirm={onConfirm} />);
+    const del = screen.getByRole("button", { name: "삭제" });
+    expect(del).toHaveClass("bg-modal-alert-icon");
+    await user.click(del);
+    expect(onConfirm).toHaveBeenCalledOnce();
+  });
+
+  it("info·success는 취소 버튼이 없다", () => {
+    const { rerender } = render(<Modal variant="info" title="안내" message="i" />);
+    expect(screen.queryByRole("button", { name: "취소" })).toBeNull();
+    rerender(<Modal variant="success" title="완료" message="s" />);
+    expect(screen.queryByRole("button", { name: "취소" })).toBeNull();
+  });
+
+  it("form은 children 슬롯을 렌더하고 저장 버튼을 노출한다", () => {
+    render(
+      <Modal variant="form" title="공고 상태 변경">
+        <label>사유<input aria-label="사유" /></label>
+      </Modal>
+    );
+    expect(screen.getByLabelText("사유")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "저장" })).toBeInTheDocument();
+  });
+
+  it("닫기(✕)를 누르면 onClose를 호출한다", async () => {
+    const user = userEvent.setup();
+    const onClose = vi.fn();
+    render(<Modal title="확인" message="m" onClose={onClose} />);
+    await user.click(screen.getByRole("button", { name: "닫기" }));
+    expect(onClose).toHaveBeenCalledOnce();
   });
 });
