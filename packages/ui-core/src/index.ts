@@ -303,7 +303,7 @@ export const mobileModalTitleClass = (variant: MobileModalVariant = "confirm"): 
 
 export const mobileModalMessageClass = "w-full whitespace-pre-line text-center text-m-message text-fg-body";
 
-/** Success 아이콘 48 원형 — PC(28·§13)와 색·크기가 다르다 */
+/** Success 아이콘 48 원형 — 색은 PC(§13)와 공유하고 크기만 다르다(PC 28) */
 export const mobileModalSuccessIconClass =
   "flex size-12 shrink-0 items-center justify-center rounded-full bg-modal-success-icon-bg text-m-icon font-bold text-modal-success-icon";
 
@@ -326,7 +326,7 @@ export const mobileModalBtnDangerClass = cx(
 
 /* Form(365:124) — 라벨 13/500, 입력 bg secondary */
 export const mobileModalFormGroupClass = "flex w-full flex-col gap-2";
-export const mobileModalFormLabelClass = "text-compact font-medium text-fg-heading";
+export const mobileModalFormLabelClass = "text-m-label font-medium text-fg-heading";
 export const mobileModalFormInputClass =
   "w-full rounded-md border border-line bg-surface-secondary px-3.5 py-3 text-sm text-fg-heading outline-none transition-colors placeholder:text-fg-disabled focus:border-brand";
 
@@ -334,7 +334,8 @@ export const mobileModalFormInputClass =
 export const mobileSheetHandleWrapClass = "flex w-full flex-col items-center pb-2 pt-3";
 export const mobileSheetHandleClass = "h-1 w-10 rounded-xs bg-line";
 export const mobileSheetHeaderClass = "flex w-full items-center px-6 pb-3 pt-2";
-export const mobileSheetItemClass = "flex w-full items-center gap-3 px-6 py-4";
+/** 라벨이 남은 폭을 채우고 라디오가 우측에 붙는다(디자인상 별도 gap 없음) */
+export const mobileSheetItemClass = "flex w-full items-center px-6 py-4";
 export const mobileSheetItemLabelClass = "flex-1 text-m-body text-fg-heading";
 export const mobileSheetRadioClass = (selected = false): string =>
   cx(
