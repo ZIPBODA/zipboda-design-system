@@ -12,6 +12,7 @@ import { CardListing } from "../CardListing.js";
 import { ListItem } from "../ListItem.js";
 import { Modal } from "../Modal.js";
 import { MobileModal } from "../MobileModal.js";
+import { mobileModalFormLabelClass, mobileSheetItemClass, mobileSheetItemLabelClass } from "@zipboda/ui-core";
 
 describe("Checkbox", () => {
   it("라벨을 렌더한다", () => {
@@ -239,6 +240,22 @@ describe("MobileModal", () => {
     expect(screen.getByLabelText("닉네임")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "저장" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "정보 변경" })).toHaveClass("text-left");
+  });
+
+  it("form 라벨은 모바일 전용 행간(m-label)을 쓴다 — Admin compact(13/20)와 다르다", () => {
+    render(
+      <MobileModal variant="form" title="정보 변경">
+        <div className={mobileModalFormLabelClass}>닉네임</div>
+      </MobileModal>
+    );
+    const label = screen.getByText("닉네임");
+    expect(label).toHaveClass("text-m-label");
+    expect(label).not.toHaveClass("text-compact");
+  });
+
+  it("시트 목록 항목은 라벨이 폭을 채우고 별도 gap을 두지 않는다", () => {
+    expect(mobileSheetItemClass).not.toMatch(/\bgap-/);
+    expect(mobileSheetItemLabelClass).toContain("flex-1");
   });
 
   it("bottomSheet는 하단 정렬 시트로 목록 슬롯과 확인 버튼을 노출한다", () => {
