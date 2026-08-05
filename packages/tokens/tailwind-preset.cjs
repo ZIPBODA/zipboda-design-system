@@ -80,6 +80,7 @@ module.exports = {
         // Mobile Modal(set 365:152) 전용 — 기존 스케일에 없는 크기·행간
         "m-title": ["17px", "21px"],
         "m-body": ["15px", "18px"],
+        "m-label": ["13px", "16px"],
         "m-message": ["14px", "22px"],
         "m-icon": ["22px", "27px"]
       },
