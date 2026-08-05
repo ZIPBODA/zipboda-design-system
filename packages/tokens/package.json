@@ -1,6 +1,6 @@
 {
   "name": "@zipboda/tokens",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "집보다(Zipboda) 디자인 토큰 — DTCG 소스 → Style Dictionary (CSS 변수·ES6/TS·RN)",
   "type": "module",
   "sideEffects": [
