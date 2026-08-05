@@ -305,7 +305,7 @@ export const mobileModalMessageClass = "w-full whitespace-pre-line text-center t
 
 /** Success 아이콘 48 원형 — PC(28·§13)와 색·크기가 다르다 */
 export const mobileModalSuccessIconClass =
-  "flex size-12 shrink-0 items-center justify-center rounded-full bg-modal-mobile-success-icon-bg text-m-icon font-bold text-modal-mobile-success-icon";
+  "flex size-12 shrink-0 items-center justify-center rounded-full bg-modal-success-icon-bg text-m-icon font-bold text-modal-success-icon";
 
 export const mobileModalButtonRowClass = "flex w-full items-stretch gap-3";
 
@@ -313,32 +313,32 @@ export const mobileModalBtnBaseClass =
   "inline-flex flex-1 items-center justify-center rounded-md px-5 py-3.5 text-m-body font-semibold transition-colors";
 export const mobileModalBtnSecondaryClass = cx(
   mobileModalBtnBaseClass,
-  "border border-modal-mobile-border bg-surface text-fg-body hover:bg-surface-secondary"
+  "border border-line bg-surface text-fg-body hover:bg-surface-secondary"
 );
 export const mobileModalBtnPrimaryClass = cx(
   mobileModalBtnBaseClass,
-  "bg-brand text-modal-mobile-on-primary hover:bg-brand-hover"
+  "bg-brand text-fg-ondark hover:bg-brand-hover"
 );
 export const mobileModalBtnDangerClass = cx(
   mobileModalBtnBaseClass,
-  "bg-modal-alert-icon text-modal-mobile-on-primary hover:opacity-90"
+  "bg-modal-alert-icon text-fg-ondark hover:opacity-90"
 );
 
 /* Form(365:124) — 라벨 13/500, 입력 bg secondary */
 export const mobileModalFormGroupClass = "flex w-full flex-col gap-2";
 export const mobileModalFormLabelClass = "text-compact font-medium text-fg-heading";
 export const mobileModalFormInputClass =
-  "w-full rounded-md border border-modal-mobile-border bg-surface-secondary px-3.5 py-3 text-sm text-fg-heading outline-none transition-colors placeholder:text-modal-mobile-placeholder focus:border-brand";
+  "w-full rounded-md border border-line bg-surface-secondary px-3.5 py-3 text-sm text-fg-heading outline-none transition-colors placeholder:text-fg-disabled focus:border-brand";
 
 /* BottomSheet(365:135) — 핸들·헤더·목록·푸터 */
 export const mobileSheetHandleWrapClass = "flex w-full flex-col items-center pb-2 pt-3";
-export const mobileSheetHandleClass = "h-1 w-10 rounded-xs bg-modal-mobile-border";
+export const mobileSheetHandleClass = "h-1 w-10 rounded-xs bg-line";
 export const mobileSheetHeaderClass = "flex w-full items-center px-6 pb-3 pt-2";
 export const mobileSheetItemClass = "flex w-full items-center gap-3 px-6 py-4";
 export const mobileSheetItemLabelClass = "flex-1 text-m-body text-fg-heading";
 export const mobileSheetRadioClass = (selected = false): string =>
   cx(
     "size-5.5 shrink-0 rounded-full border-2",
-    selected ? "border-brand bg-brand" : "border-modal-mobile-border"
+    selected ? "border-brand bg-brand" : "border-line"
   );
 export const mobileSheetFooterClass = "flex w-full items-stretch px-6 pb-safe-b pt-3";

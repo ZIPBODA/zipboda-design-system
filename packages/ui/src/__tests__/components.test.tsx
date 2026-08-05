@@ -205,7 +205,7 @@ describe("MobileModal", () => {
 
   it("주 버튼 텍스트는 흰색이다(PC는 fg-heading)", () => {
     render(<MobileModal variant="info" title="안내" message="i" />);
-    expect(screen.getByRole("button", { name: "확인" })).toHaveClass("text-modal-mobile-on-primary");
+    expect(screen.getByRole("button", { name: "확인" })).toHaveClass("text-fg-ondark");
   });
 
   it("alert 주 버튼은 삭제(danger)이고 onConfirm을 호출한다", async () => {
