@@ -174,6 +174,16 @@ describe("Modal", () => {
     expect(screen.getByRole("button", { name: "저장" })).toBeInTheDocument();
   });
 
+  it("size=lg면 넓은 폭(max-w-[640px]) 클래스를 적용한다", () => {
+    render(<Modal variant="form" size="lg" title="넓은 폼"><input aria-label="f" /></Modal>);
+    expect(screen.getByRole("dialog", { name: "넓은 폼" })).toHaveClass("max-w-[640px]");
+  });
+
+  it("size 미지정 form은 기본 480px 폭이다", () => {
+    render(<Modal variant="form" title="기본 폼"><input aria-label="g" /></Modal>);
+    expect(screen.getByRole("dialog", { name: "기본 폼" })).toHaveClass("max-w-[480px]");
+  });
+
   it("닫기(✕)를 누르면 onClose를 호출한다", async () => {
     const user = userEvent.setup();
     const onClose = vi.fn();

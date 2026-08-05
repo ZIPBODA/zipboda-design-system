@@ -18,7 +18,8 @@ import {
   modalBtnPrimaryClass,
   modalBtnDangerClass,
   type ModalVariant,
-  type ModalIconVariant
+  type ModalIconVariant,
+  type ModalSize
 } from "@zipboda/ui-core";
 
 const DEFAULT_CONFIRM_LABEL: Record<ModalVariant, string> = {
@@ -35,6 +36,8 @@ export interface ModalProps {
   /** 열림 여부. false면 렌더하지 않는다(기본 true) */
   open?: boolean;
   variant?: ModalVariant;
+  /** 카드 최대 폭. 미지정 시 variant 기본(form 480 / 그 외 420). 넓은 폼은 "lg" */
+  size?: ModalSize;
   title: string;
   /** 닫기(✕)·오버레이 클릭 */
   onClose?: () => void;
@@ -61,6 +64,7 @@ export interface ModalProps {
 export function Modal({
   open = true,
   variant = "confirm",
+  size,
   title,
   onClose,
   message,
@@ -83,7 +87,7 @@ export function Modal({
   return (
     <div className={modalOverlayClass} onClick={dismissOnOverlay ? onClose : undefined}>
       <div
-        className={cx(modalCardClass(variant), className)}
+        className={cx(modalCardClass(variant, size), className)}
         role="dialog"
         aria-modal="true"
         aria-label={title}

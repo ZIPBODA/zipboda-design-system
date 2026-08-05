@@ -222,6 +222,13 @@ export const listItemValueClass = "ml-auto text-sm font-medium text-fg-muted";
  * 오버레이 50% black. 푸터 버튼은 Button(lg/sm)과 다른 전용 스펙(pad 10/20·r8·14/500). */
 export type ModalVariant = "confirm" | "alert" | "info" | "success" | "form";
 export type ModalIconVariant = Exclude<ModalVariant, "form">;
+/** 카드 최대 폭. 미지정 시 variant 기본(form 480 / 그 외 420). lg는 넓은 폼용 */
+export type ModalSize = "sm" | "md" | "lg";
+export const modalWidthClass: Record<ModalSize, string> = {
+  sm: "max-w-[420px]",
+  md: "max-w-[480px]",
+  lg: "max-w-[640px]"
+};
 
 export interface ModalIconTokens {
   /** 아이콘 배경 토큰 키 */
@@ -239,8 +246,11 @@ export const modalIconTokens: Record<ModalIconVariant, ModalIconTokens> = {
 };
 
 export const modalOverlayClass = "fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4";
-export const modalCardClass = (variant: ModalVariant = "confirm"): string =>
-  cx("flex w-full flex-col rounded-xl bg-surface shadow-modal", variant === "form" ? "max-w-[480px]" : "max-w-[420px]");
+export const modalCardClass = (variant: ModalVariant = "confirm", size?: ModalSize): string =>
+  cx(
+    "flex max-h-[90vh] w-full flex-col rounded-xl bg-surface shadow-modal",
+    size ? modalWidthClass[size] : variant === "form" ? "max-w-[480px]" : "max-w-[420px]"
+  );
 export const modalHeaderClass = "flex items-center justify-between gap-2 self-stretch px-6 pb-4 pt-5";
 export const modalHeaderLeftClass = "flex flex-1 items-center gap-2.5";
 export const modalIconClass: Record<ModalIconVariant, string> = {
@@ -252,8 +262,8 @@ export const modalIconClass: Record<ModalIconVariant, string> = {
 export const modalTitleClass = "text-base font-semibold text-fg-heading";
 export const modalCloseClass = "inline-flex h-8 items-center justify-center rounded-md px-1 text-base text-fg-disabled transition-colors hover:bg-surface-secondary";
 export const modalDividerClass = "h-px w-full bg-line";
-export const modalBodyClass = "flex flex-col gap-3 self-stretch px-6 py-5";
-export const modalFormBodyClass = "flex flex-col gap-4 self-stretch px-6 py-5";
+export const modalBodyClass = "flex min-h-0 flex-1 flex-col gap-3 self-stretch overflow-y-auto px-6 py-5";
+export const modalFormBodyClass = "flex min-h-0 flex-1 flex-col gap-4 self-stretch overflow-y-auto px-6 py-5";
 export const modalMessageClass = "whitespace-pre-line text-sm leading-relaxed text-fg-body";
 export const modalFooterClass = "flex items-center justify-end gap-2 self-stretch rounded-b-xl bg-surface-secondary px-6 pb-5 pt-4";
 

@@ -34,5 +34,6 @@ export type {
   BadgeVariant,
   ChipVariant,
   DividerOrientation,
-  ModalVariant
+  ModalVariant,
+  ModalSize
 } from "@zipboda/ui-core";
