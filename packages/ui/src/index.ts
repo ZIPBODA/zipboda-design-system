@@ -24,6 +24,8 @@ export { CardListing } from "./CardListing.js";
 export type { CardListingProps } from "./CardListing.js";
 export { ListItem } from "./ListItem.js";
 export type { ListItemProps } from "./ListItem.js";
+export { Modal } from "./Modal.js";
+export type { ModalProps } from "./Modal.js";
 
 // 계약 타입/variant 맵 재노출(소비처에서 @zipboda/ui-core 직접 의존 없이 사용 가능)
 export type {
@@ -31,5 +33,6 @@ export type {
   ButtonSize,
   BadgeVariant,
   ChipVariant,
-  DividerOrientation
+  DividerOrientation,
+  ModalVariant
 } from "@zipboda/ui-core";

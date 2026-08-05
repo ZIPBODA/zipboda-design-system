@@ -215,3 +215,54 @@ export const cardListingDdayClass = "text-xs font-semibold text-status-error";
 export const listItemRootClass = "flex w-full items-center gap-2 px-4 py-3";
 export const listItemLabelClass = "text-sm font-normal text-fg-strong";
 export const listItemValueClass = "ml-auto text-sm font-medium text-fg-muted";
+
+/* ── Modal ── (figma set 281:136 / 디자인시스템 §13)
+ * variant: confirm(?)·alert(!)·info(i)·success(✓)·form(아이콘 없음).
+ * 카드 w420(form 480)·r16·shadow-modal, header(아이콘28 원형)·divider·body·footer(bg secondary).
+ * 오버레이 50% black. 푸터 버튼은 Button(lg/sm)과 다른 전용 스펙(pad 10/20·r8·14/500). */
+export type ModalVariant = "confirm" | "alert" | "info" | "success" | "form";
+export type ModalIconVariant = Exclude<ModalVariant, "form">;
+
+export interface ModalIconTokens {
+  /** 아이콘 배경 토큰 키 */
+  bg: TokenKey;
+  /** 아이콘 글리프 색 토큰 키 */
+  fg: TokenKey;
+  /** 글리프 문자 */
+  glyph: string;
+}
+export const modalIconTokens: Record<ModalIconVariant, ModalIconTokens> = {
+  confirm: { bg: "modal-confirm-icon-bg", fg: "modal-confirm-icon", glyph: "?" },
+  alert:   { bg: "modal-alert-icon-bg",   fg: "modal-alert-icon",   glyph: "!" },
+  info:    { bg: "modal-info-icon-bg",    fg: "modal-info-icon",    glyph: "i" },
+  success: { bg: "modal-success-icon-bg", fg: "modal-success-icon", glyph: "✓" }
+};
+
+export const modalOverlayClass = "fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4";
+export const modalCardClass = (variant: ModalVariant = "confirm"): string =>
+  cx("flex w-full flex-col rounded-xl bg-surface shadow-modal", variant === "form" ? "max-w-[480px]" : "max-w-[420px]");
+export const modalHeaderClass = "flex items-center justify-between gap-2 self-stretch px-6 pb-4 pt-5";
+export const modalHeaderLeftClass = "flex flex-1 items-center gap-2.5";
+export const modalIconClass: Record<ModalIconVariant, string> = {
+  confirm: "flex size-7 shrink-0 items-center justify-center rounded-full bg-modal-confirm-icon-bg text-sm font-bold text-modal-confirm-icon",
+  alert:   "flex size-7 shrink-0 items-center justify-center rounded-full bg-modal-alert-icon-bg text-sm font-bold text-modal-alert-icon",
+  info:    "flex size-7 shrink-0 items-center justify-center rounded-full bg-modal-info-icon-bg text-sm font-bold text-modal-info-icon",
+  success: "flex size-7 shrink-0 items-center justify-center rounded-full bg-modal-success-icon-bg text-sm font-bold text-modal-success-icon"
+};
+export const modalTitleClass = "text-base font-semibold text-fg-heading";
+export const modalCloseClass = "inline-flex h-8 items-center justify-center rounded-md px-1 text-base text-fg-disabled transition-colors hover:bg-surface-secondary";
+export const modalDividerClass = "h-px w-full bg-line";
+export const modalBodyClass = "flex flex-col gap-3 self-stretch px-6 py-5";
+export const modalFormBodyClass = "flex flex-col gap-4 self-stretch px-6 py-5";
+export const modalMessageClass = "whitespace-pre-line text-sm leading-relaxed text-fg-body";
+export const modalFooterClass = "flex items-center justify-end gap-2 self-stretch rounded-b-xl bg-surface-secondary px-6 pb-5 pt-4";
+
+export const modalBtnBaseClass = "inline-flex items-center justify-center rounded-md px-5 py-2.5 text-sm font-medium transition-colors";
+export const modalBtnSecondaryClass = cx(modalBtnBaseClass, "border border-line bg-surface text-gray-700 hover:bg-surface-secondary");
+export const modalBtnPrimaryClass = cx(modalBtnBaseClass, "bg-brand text-fg-heading hover:bg-brand-hover");
+export const modalBtnDangerClass = cx(modalBtnBaseClass, "bg-modal-alert-icon text-fg-ondark hover:opacity-90");
+
+export const modalFormGroupClass = "flex flex-col gap-1.5 self-stretch";
+export const modalFormLabelClass = "text-compact font-medium text-gray-700";
+export const modalFormInputClass =
+  "w-full rounded-md border border-line bg-surface px-3.5 py-2.5 text-sm text-fg-strong outline-none transition-colors placeholder:text-fg-disabled focus:border-brand";
