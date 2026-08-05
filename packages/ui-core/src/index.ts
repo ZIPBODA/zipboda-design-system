@@ -266,3 +266,79 @@ export const modalFormGroupClass = "flex flex-col gap-1.5 self-stretch";
 export const modalFormLabelClass = "text-compact font-medium text-gray-700";
 export const modalFormInputClass =
   "w-full rounded-md border border-line bg-surface px-3.5 py-2.5 text-sm text-fg-strong outline-none transition-colors placeholder:text-fg-disabled focus:border-brand";
+
+/* ── Mobile Modal ── (figma set 365:152 / 디자인시스템 §14)
+ * PC Modal(281:136)과 구조가 다르다: header/divider/footer 영역·아이콘·닫기(✕)가 없고
+ * 단일 컬럼(타이틀·메시지·버튼행)이다. 주 버튼 텍스트도 흰색(PC는 fg-heading).
+ * BottomSheet는 화면 하단 고정 시트로 목록 선택에 쓴다.
+ */
+export type MobileModalVariant = "confirm" | "alert" | "info" | "success" | "form" | "bottomSheet";
+
+/** 취소 버튼이 함께 노출되는 variant */
+export const MOBILE_MODAL_VARIANTS_WITH_CANCEL: readonly MobileModalVariant[] = ["confirm", "alert", "form"];
+/** 타이틀을 좌측 정렬하는 variant (그 외는 가운데) */
+export const MOBILE_MODAL_VARIANTS_TITLE_LEFT: readonly MobileModalVariant[] = ["form", "bottomSheet"];
+
+export const mobileModalOverlayClass = (variant: MobileModalVariant = "confirm"): string =>
+  cx(
+    "fixed inset-0 z-50 flex bg-black/50",
+    variant === "bottomSheet" ? "items-end justify-center" : "items-center justify-center p-4"
+  );
+
+/** 카드 — 일반 variant는 w320 카드, BottomSheet는 전체폭 시트(상단만 radius 20) */
+export const mobileModalCardClass = (variant: MobileModalVariant = "confirm"): string =>
+  variant === "bottomSheet"
+    ? "flex w-full max-w-[375px] flex-col rounded-t-2xl bg-surface"
+    : cx(
+        "flex w-full max-w-[320px] flex-col rounded-xl bg-surface px-6 pb-6",
+        variant === "success" ? "items-center pt-8" : "items-stretch pt-7",
+        variant === "confirm" || variant === "alert" ? "gap-5" : "gap-4"
+      );
+
+export const mobileModalTitleClass = (variant: MobileModalVariant = "confirm"): string =>
+  cx(
+    "w-full text-m-title font-bold text-fg-heading",
+    MOBILE_MODAL_VARIANTS_TITLE_LEFT.includes(variant) ? "text-left" : "text-center"
+  );
+
+export const mobileModalMessageClass = "w-full whitespace-pre-line text-center text-m-message text-fg-body";
+
+/** Success 아이콘 48 원형 — PC(28·§13)와 색·크기가 다르다 */
+export const mobileModalSuccessIconClass =
+  "flex size-12 shrink-0 items-center justify-center rounded-full bg-modal-mobile-success-icon-bg text-m-icon font-bold text-modal-mobile-success-icon";
+
+export const mobileModalButtonRowClass = "flex w-full items-stretch gap-3";
+
+export const mobileModalBtnBaseClass =
+  "inline-flex flex-1 items-center justify-center rounded-md px-5 py-3.5 text-m-body font-semibold transition-colors";
+export const mobileModalBtnSecondaryClass = cx(
+  mobileModalBtnBaseClass,
+  "border border-modal-mobile-border bg-surface text-fg-body hover:bg-surface-secondary"
+);
+export const mobileModalBtnPrimaryClass = cx(
+  mobileModalBtnBaseClass,
+  "bg-brand text-modal-mobile-on-primary hover:bg-brand-hover"
+);
+export const mobileModalBtnDangerClass = cx(
+  mobileModalBtnBaseClass,
+  "bg-modal-alert-icon text-modal-mobile-on-primary hover:opacity-90"
+);
+
+/* Form(365:124) — 라벨 13/500, 입력 bg secondary */
+export const mobileModalFormGroupClass = "flex w-full flex-col gap-2";
+export const mobileModalFormLabelClass = "text-compact font-medium text-fg-heading";
+export const mobileModalFormInputClass =
+  "w-full rounded-md border border-modal-mobile-border bg-surface-secondary px-3.5 py-3 text-sm text-fg-heading outline-none transition-colors placeholder:text-modal-mobile-placeholder focus:border-brand";
+
+/* BottomSheet(365:135) — 핸들·헤더·목록·푸터 */
+export const mobileSheetHandleWrapClass = "flex w-full flex-col items-center pb-2 pt-3";
+export const mobileSheetHandleClass = "h-1 w-10 rounded-xs bg-modal-mobile-border";
+export const mobileSheetHeaderClass = "flex w-full items-center px-6 pb-3 pt-2";
+export const mobileSheetItemClass = "flex w-full items-center gap-3 px-6 py-4";
+export const mobileSheetItemLabelClass = "flex-1 text-m-body text-fg-heading";
+export const mobileSheetRadioClass = (selected = false): string =>
+  cx(
+    "size-5.5 shrink-0 rounded-full border-2",
+    selected ? "border-brand bg-brand" : "border-modal-mobile-border"
+  );
+export const mobileSheetFooterClass = "flex w-full items-stretch px-6 pb-safe-b pt-3";

@@ -56,5 +56,13 @@
     "infoIcon":      { "$type": "color", "$value": "#3373D9" },
     "successIconBg": { "$type": "color", "$value": "#ECFDF5" },
     "successIcon":   { "$type": "color", "$value": "#00BC7D" }
+  },
+
+  "modalMobile": {
+    "border":        { "$type": "color", "$value": "#E4E7EC" },
+    "onPrimary":     { "$type": "color", "$value": "#FFFFFF" },
+    "placeholder":   { "$type": "color", "$value": "#9CA3AF" },
+    "successIconBg": { "$type": "color", "$value": "#DCFCE7" },
+    "successIcon":   { "$type": "color", "$value": "#16A34A" }
   }
 }

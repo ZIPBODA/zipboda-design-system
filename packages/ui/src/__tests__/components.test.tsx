@@ -11,6 +11,7 @@ import { CardProduct } from "../CardProduct.js";
 import { CardListing } from "../CardListing.js";
 import { ListItem } from "../ListItem.js";
 import { Modal } from "../Modal.js";
+import { MobileModal } from "../MobileModal.js";
 
 describe("Checkbox", () => {
   it("라벨을 렌더한다", () => {
@@ -179,6 +180,88 @@ describe("Modal", () => {
     const onClose = vi.fn();
     render(<Modal title="확인" message="m" onClose={onClose} />);
     await user.click(screen.getByRole("button", { name: "닫기" }));
+    expect(onClose).toHaveBeenCalledOnce();
+  });
+});
+
+describe("MobileModal", () => {
+  it("confirm은 제목·메시지·취소/확인을 렌더한다", () => {
+    render(<MobileModal variant="confirm" title="청약 신청을 취소하시겠습니까?" message="복구할 수 없습니다." />);
+    expect(screen.getByRole("dialog", { name: "청약 신청을 취소하시겠습니까?" })).toBeInTheDocument();
+    expect(screen.getByText("복구할 수 없습니다.")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "취소" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "확인" })).toBeInTheDocument();
+  });
+
+  it("open=false면 아무것도 렌더하지 않는다", () => {
+    const { container } = render(<MobileModal open={false} title="숨김" message="x" />);
+    expect(container).toBeEmptyDOMElement();
+  });
+
+  it("PC 모달과 달리 닫기(✕) 버튼이 없다", () => {
+    render(<MobileModal title="확인" message="m" />);
+    expect(screen.queryByRole("button", { name: "닫기" })).toBeNull();
+  });
+
+  it("주 버튼 텍스트는 흰색이다(PC는 fg-heading)", () => {
+    render(<MobileModal variant="info" title="안내" message="i" />);
+    expect(screen.getByRole("button", { name: "확인" })).toHaveClass("text-modal-mobile-on-primary");
+  });
+
+  it("alert 주 버튼은 삭제(danger)이고 onConfirm을 호출한다", async () => {
+    const user = userEvent.setup();
+    const onConfirm = vi.fn();
+    render(<MobileModal variant="alert" title="삭제 확인" message="삭제할까요?" onConfirm={onConfirm} />);
+    const del = screen.getByRole("button", { name: "삭제" });
+    expect(del).toHaveClass("bg-modal-alert-icon");
+    await user.click(del);
+    expect(onConfirm).toHaveBeenCalledOnce();
+  });
+
+  it("info·success는 취소 버튼이 없다", () => {
+    const { rerender } = render(<MobileModal variant="info" title="안내" message="i" />);
+    expect(screen.queryByRole("button", { name: "취소" })).toBeNull();
+    rerender(<MobileModal variant="success" title="완료" message="s" />);
+    expect(screen.queryByRole("button", { name: "취소" })).toBeNull();
+  });
+
+  it("success는 체크 아이콘을 노출한다", () => {
+    render(<MobileModal variant="success" title="완료" message="s" />);
+    expect(screen.getByText("✓")).toBeInTheDocument();
+  });
+
+  it("form은 children 슬롯과 저장 버튼을 노출하고 타이틀을 좌측 정렬한다", () => {
+    render(
+      <MobileModal variant="form" title="정보 변경">
+        <label>닉네임<input aria-label="닉네임" /></label>
+      </MobileModal>
+    );
+    expect(screen.getByLabelText("닉네임")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "저장" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "정보 변경" })).toHaveClass("text-left");
+  });
+
+  it("bottomSheet는 하단 정렬 시트로 목록 슬롯과 확인 버튼을 노출한다", () => {
+    render(
+      <MobileModal variant="bottomSheet" title="관심 지역 선택">
+        <button type="button">서울 전체</button>
+      </MobileModal>
+    );
+    expect(screen.getByRole("button", { name: "서울 전체" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "확인" })).toBeInTheDocument();
+    expect(screen.getByRole("dialog")).toHaveClass("rounded-t-2xl");
+    expect(screen.queryByRole("button", { name: "취소" })).toBeNull();
+  });
+
+  it("오버레이 클릭 시 onClose를 호출하고, dismissOnOverlay=false면 호출하지 않는다", async () => {
+    const user = userEvent.setup();
+    const onClose = vi.fn();
+    const { rerender } = render(<MobileModal title="확인" message="m" onClose={onClose} />);
+    await user.click(screen.getByRole("dialog").parentElement as HTMLElement);
+    expect(onClose).toHaveBeenCalledOnce();
+
+    rerender(<MobileModal title="확인" message="m" onClose={onClose} dismissOnOverlay={false} />);
+    await user.click(screen.getByRole("dialog").parentElement as HTMLElement);
     expect(onClose).toHaveBeenCalledOnce();
   });
 });

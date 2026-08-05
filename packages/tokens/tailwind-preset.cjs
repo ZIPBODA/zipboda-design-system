@@ -46,6 +46,13 @@ module.exports = {
           "info-icon-bg": "#EFF6FF", "info-icon": "#3373D9",
           "success-icon-bg": "#ECFDF5", "success-icon": "#00BC7D"
         },
+        // Mobile Modal (set 365:152) — PC 모달과 값이 다른 항목만 별도 등록
+        "modal-mobile": {
+          border: "#E4E7EC",
+          "on-primary": "#FFFFFF",
+          placeholder: "#9CA3AF",
+          "success-icon-bg": "#DCFCE7", "success-icon": "#16A34A"
+        },
         // 보라 배지
         purple: { DEFAULT: "#8B5CF6", bg: "#F5F3FF", light: "#F3E8FF" },
         // 코드 블록 / diff
@@ -76,7 +83,17 @@ module.exports = {
         "display-lg": ["48px", "56px"],
         // Admin 밀집형
         compact: ["13px", "20px"],
-        "2xsmall": ["11px", "16px"]
+        "2xsmall": ["11px", "16px"],
+        // Mobile Modal(set 365:152) 전용 — 기존 스케일에 없는 크기·행간
+        "m-title": ["17px", "21px"],
+        "m-body": ["15px", "18px"],
+        "m-message": ["14px", "22px"],
+        "m-icon": ["22px", "27px"]
+      },
+      spacing: {
+        "5.5": "22px",
+        // iOS 홈 인디케이터 여백 — BottomSheet 푸터 하단(365:149)
+        "safe-b": "34px"
       },
       boxShadow: {
         sm: "0 1px 4px 0 rgba(0,0,0,0.06)",
