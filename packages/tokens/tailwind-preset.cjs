@@ -76,7 +76,17 @@ module.exports = {
         "display-lg": ["48px", "56px"],
         // Admin 밀집형
         compact: ["13px", "20px"],
-        "2xsmall": ["11px", "16px"]
+        "2xsmall": ["11px", "16px"],
+        // Mobile Modal(set 365:152) 전용 — 기존 스케일에 없는 크기·행간
+        "m-title": ["17px", "21px"],
+        "m-body": ["15px", "18px"],
+        "m-message": ["14px", "22px"],
+        "m-icon": ["22px", "27px"]
+      },
+      spacing: {
+        "5.5": "22px",
+        // iOS 홈 인디케이터 여백 — BottomSheet 푸터 하단(365:149)
+        "safe-b": "34px"
       },
       boxShadow: {
         sm: "0 1px 4px 0 rgba(0,0,0,0.06)",

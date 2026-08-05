@@ -26,6 +26,8 @@ export { ListItem } from "./ListItem.js";
 export type { ListItemProps } from "./ListItem.js";
 export { Modal } from "./Modal.js";
 export type { ModalProps } from "./Modal.js";
+export { MobileModal } from "./MobileModal.js";
+export type { MobileModalProps } from "./MobileModal.js";
 
 // 계약 타입/variant 맵 재노출(소비처에서 @zipboda/ui-core 직접 의존 없이 사용 가능)
 export type {
@@ -34,5 +36,6 @@ export type {
   BadgeVariant,
   ChipVariant,
   DividerOrientation,
-  ModalVariant
+  ModalVariant,
+  MobileModalVariant
 } from "@zipboda/ui-core";
