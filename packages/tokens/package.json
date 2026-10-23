@@ -3,6 +3,7 @@
   "version": "1.2.1",
   "description": "집보다(Zipboda) 디자인 토큰 — DTCG 소스 → Style Dictionary (CSS 변수·ES6/TS·RN)",
   "type": "module",
+  "main": "./build/js/index.js",
   "sideEffects": [
     "*.css"
   ],
@@ -14,7 +15,8 @@
   "exports": {
     ".": {
       "types": "./build/js/index.d.ts",
-      "import": "./build/js/index.js"
+      "import": "./build/js/index.js",
+      "default": "./build/js/index.js"
     },
     "./css": "./build/css/variables.css",
     "./tokens.css": "./build/css/variables.css",
